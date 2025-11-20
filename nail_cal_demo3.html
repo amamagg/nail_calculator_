@@ -203,6 +203,19 @@
             <span class="價格">x100 元/色</span>
 			</div>
 		</div>
+
+        <h3>自訂</h3>
+      		<div id="自訂項目區"> <!-- 自訂項目 -->
+            </div>
+        <div class="自訂項目">
+            <div class="自訂項目內容">
+                <input type="text" id="自訂項目名稱" placeholder="名稱">
+                <input type="number" id="自訂項目單價" placeholder="單價">
+                <span> x </span>
+                <input type="number" id="自訂項目數量" value="1" min="1">
+            </div>
+            <button id="自訂項目按鈕" onclick="功能_新增自訂項目()">新增</button>
+        </div>
                 
              
         <h3>卸甲</h3>
@@ -257,6 +270,7 @@
             
             const 明細類別 = {
                 '凝膠': [],
+                '自訂': [],
                 '卸甲': [],
                 '保養': []
             };
