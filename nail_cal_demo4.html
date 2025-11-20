@@ -250,6 +250,17 @@
             <span class="價格">800 元</span>
         </div>
 
+        <h3>折扣</h3>
+		<div class="服務項目">
+            <input type="checkbox" id="折扣_九折" value="0.9"> <!-- 活動項目 -->
+            <label for="折扣_九折">九折優惠</label>            
+        </div>
+        <div class="浮動項目">
+            <input type="checkbox" id="折價券"> <!-- 活動項目 -->
+            <label for="折價券">折價券</label>
+             <input type="number" id="折價券金額" value="100">             
+		</div>
+
         <button id="加總按鈕" onclick="功能_計算總額()">計算總額</button>
 
         <div id="收據" style="display:none;">
@@ -272,7 +283,8 @@
                 '凝膠': [],
                 '自訂': [],
                 '卸甲': [],
-                '保養': []
+                '保養': [],
+                '折扣': []
             };
 
             const 勾選項目 = document.querySelectorAll('input[type="checkbox"]');
