@@ -184,7 +184,17 @@
 	    <input type="checkbox" id="凝膠_單色" data-price="1000">
             <label for="凝膠_單色">單色</label>
             <span class="價格">1000 元</span>
-        </div>               
+        </div>     
+        <div class="服務項目">
+	    <input type="checkbox" id="凝膠_法式" data-price="1500">
+            <label for="凝膠_法式">法式</label>
+            <span class="價格">1500 元</span>         
+        </div>
+        <div class="服務項目">
+	    <input type="checkbox" id="凝膠_貓眼" data-price="1500">
+            <label for="凝膠_貓眼">貓眼</label>
+            <span class="價格">1500 元</span>          
+        </div>            
              
         <h3>卸甲</h3>
 		<div class="服務項目">
@@ -197,6 +207,18 @@
             <label for="卸甲_本店不續">本店卸甲不續做</label>
             <span class="價格">300 元</span>
         </div>                      
+
+        <h3>保養</h3>
+        <div class="服務項目">
+            <input type="checkbox" id="保養_基礎" data-price="500">
+            <label for="保養_基礎">基礎手部保養</label>
+            <span class="價格">500 元</span>
+        </div>
+        <div class="服務項目">
+            <input type="checkbox" id="保養_深層" data-price="800">
+            <label for="保養_深層">深層手部保養</label>
+            <span class="價格">800 元</span>
+        </div>
 
         <button id="加總按鈕" onclick="功能_計算總額()">計算總額</button>
 
@@ -218,7 +240,8 @@
             
             const 明細類別 = {
                 '凝膠': [],
-                '卸甲': []
+                '卸甲': [],
+                '保養': []
             };
 
             const 勾選項目 = document.querySelectorAll('input[type="checkbox"]');
@@ -235,7 +258,11 @@
                     else if (checkbox.id.startsWith('卸甲_')) {
                         明細類別['卸甲'].push({ label:項目名稱, price: 項目金額 });                   
                         總金額 += 項目金額;	
-					}                   
+					} 
+                    else if (checkbox.id.startsWith('保養_')) {
+                        明細類別['保養'].push({ label:項目名稱, price: 項目金額 });                   
+                        總金額 += 項目金額;	
+                    }                   
                 }
             });   
             
