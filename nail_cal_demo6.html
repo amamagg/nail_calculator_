@@ -261,6 +261,16 @@
              <input type="number" id="折價券金額" value="100">             
 		</div>
 
+        <h3>商品</h3>        
+        <div class="服務項目">            
+            <input type="checkbox" id="指緣油" data-price="200"> 
+            <label for="指緣油">指緣油</label>
+			<div class="浮動項目">
+               <input type="number" id="指緣油_數量" value="1">
+            <span class="價格">x200 元/個</span>
+			</div>
+		</div> 
+
         <button id="加總按鈕" onclick="功能_計算總額()">計算總額</button>
 
         <div id="收據" style="display:none;">
@@ -284,7 +294,8 @@
                 '自訂': [],
                 '卸甲': [],
                 '保養': [],
-                '折扣': []
+                '折扣': [],
+                '商品(不參與折扣)':[]
             };
 
             const 勾選項目 = document.querySelectorAll('input[type="checkbox"]');
@@ -358,6 +369,18 @@
             }
 					
            
+            // 5. 不參與折扣的自訂商品
+            const 商品_指緣油 = document.getElementById('指緣油');
+            if (商品_指緣油 != null && 商品_指緣油.checked) {     
+                const 單價 = parseFloat(商品_指緣油.dataset.price);
+                const 名稱 = document.querySelector('label[for="指緣油"]').textContent;                              
+                const 數量 = parseInt(document.getElementById('指緣油_數量').value) || 1;                     
+                const 金額 = 單價 * 數量;                        
+                
+                明細類別['商品(不參與折扣)'].push({ label: `${名稱} x ${數量}`, price: 金額 });
+                總金額 += 金額;
+            }
+
             // 根據分類生成收據內容
             for (const category in 明細類別) {
                 if (明細類別[category].length > 0) {
